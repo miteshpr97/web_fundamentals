@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API FETCH</title>
+    <style>
+        body {
+            background:linear-gradient(45deg, red,pink,orange);
+            height: 100vh;
+
+        }
+
+        h1 {
+            position: relative;
+            margin: 0 auto;
+            border: 1px solid black;
+            width: 200px;
+            text-align: center;
+        }
+
+        h1:hover {
+            background-color: rgb(146, 76, 173);
+            color: rgb(245, 245, 245)
+        }
+
+        .btn {
+            background-color: rgb(21, 134, 209);
+            border-radius: 8px;
+            padding: 10px;
+            color: whitesmoke;
+            border: none;
+            margin-top: 40px;
+            margin-left: 680px;
+            font-size: 24px;
+        }
+
+        .image {
+            width: 75vw;
+            height: 75vh;
+            margin-left: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API FETCH</h1>
+    <button class="btn">click Here!</button>
+    <p id="add_img"></p>
+
+    <script>
+        fetch('https://meme-api.herokuapp.com/gimme')
+            .then(Response => Response.json())
+            .then(info => {
+                let url = info.url;
+                var image = document.getElementById('add_img');
+                add_img.innerHTML = "<img src='" + url + "' class='image' >"
+            })
+        function changeimg() {
+            location.reload();
+        }
+        document.querySelector('button').addEventListener('click', changeimg);
+    </script>
+</body>
+
+</html>
